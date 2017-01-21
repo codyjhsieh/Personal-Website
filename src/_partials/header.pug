@@ -1,3 +1,13 @@
 header
-  h1= "Cody Hsieh"
-  h2= "Personal Portfolio Website"
+  script(src='/js/script.js')
+  svg(src="/images/logo.svg")
+  ul(class="topnav" id="myTopnav")
+   li: a(href="#home", title="Recent") Recent
+   li: a(href="#photos", title="Photos") Photos
+   li: a(href="#blog", title="Blog") Blog
+   li: a(href="#about", title="About") About
+   li: a(href="#contact", title="Contact") Contact
+   li(class="icon"): a(href="javascript:void(0);" onclick="myFunction()") &#9776
+  h1= "Oh hey, I'm Cody Hsieh"
+  h2= "Here's what I've been up to"
+
