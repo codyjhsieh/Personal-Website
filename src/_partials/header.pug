@@ -1,13 +1,23 @@
 header
-  script(src='/js/script.js')
-  svg(src="/images/logo.svg")
+  script.
+    function myFunction() {
+    var x = document.getElementById("myTopnav");
+    if (x.className === "topnav") {
+        x.className += " responsive";
+    } else {
+        x.className = "topnav";
+      }
+    }
   ul(class="topnav" id="myTopnav")
-   li: a(href="#home", title="Recent") Recent
-   li: a(href="#photos", title="Photos") Photos
-   li: a(href="#blog", title="Blog") Blog
-   li: a(href="#about", title="About") About
-   li: a(href="#contact", title="Contact") Contact
-   li(class="icon"): a(href="javascript:void(0);" onclick="myFunction()") &#9776
-  h1= "Oh hey, I'm Cody Hsieh"
+    div(class="buttonHolder")
+      li(class="one"): a(href="#home", title="Recent") Recent
+      li(class="two"): a(href="#photos", title="Photos") Photos
+      li(class="three"): a(href="#blog", title="Blog") Blog
+      li(class="four"): a(href="#about", title="About") About
+      li(class="five"): a(href="#contact", title="Contact") Contact
+      hr
+
+    li(class="icon"): a(href="javascript:void(0);" onclick="myFunction()") &#9776
+  h1= "I'm Cody Hsieh"
   h2= "Here's what I've been up to"
 

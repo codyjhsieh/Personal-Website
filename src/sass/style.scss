@@ -1,6 +1,9 @@
 @import "includes/base";
 
 header {
+  svg {
+    display: inline-block;
+  }
   h1 {
     font-weight: 300;
     text-align: center;
@@ -44,16 +47,19 @@ header {
 		/* Hide the list item that contains the link that should open and close the topnav on small screens */
 		ul.topnav li.icon {display: none;}
   /* When the screen is less than 680 pixels wide, hide all list items, except for the first one ("Home"). Show the list item that contains the link to open and close the topnav (li.icon) */
-@media screen and (max-width:680px) {
-  ul.topnav li:not(:first-child) {display: none;}
+@media screen and (max-width:850px) {
+  ul.topnav li{display: none;}
   ul.topnav li.icon {
     float: right;
     display: inline-block;
   }
+  .buttonHolder{
+    text-align: center;
+  }
 }
 
 /* The "responsive" class is added to the topnav with JavaScript when the user clicks on the icon. This class makes the topnav look good on small screens */
-@media screen and (max-width:680px) {
+@media screen and (max-width:850px) {
   ul.topnav.responsive {position: relative;}
   ul.topnav.responsive li.icon {
     position: absolute;
@@ -66,8 +72,43 @@ header {
   }
   ul.topnav.responsive li a {
     display: block;
-    text-align: left;
+    text-align: center;
   }
+}
+.container {
+  width: 50%;
+  margin: 0 auto;
+}
+.buttonHolder{
+  display: inline-block
+}
+.one:hover ~ hr {
+  margin-left: 0%;
+}
+.two:hover ~ hr {
+  margin-left: 20%;
+}
+
+.three:hover ~ hr {
+  margin-left: 40%;
+}
+
+.four:hover ~ hr {
+  margin-left: 60%;
+}
+
+.five:hover ~ hr {
+  margin-left: 80%;
+}
+
+hr {
+  height: .20rem;
+  width: 20%;
+  margin: 0;
+  background: tomato;
+  border: none;
+  transition: .3s ease-in-out;
+  box-sizing: border-box;
 }
 }
 body {
