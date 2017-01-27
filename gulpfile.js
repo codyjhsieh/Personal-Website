@@ -8,6 +8,7 @@ var gulp = require('gulp'),
   prefix = require('gulp-autoprefixer'),
   sass = require('gulp-sass'),
   browserSync = require('browser-sync');
+var imagemin = require('gulp-imagemin');
 
 /*
  * Directories here
@@ -18,7 +19,17 @@ var paths = {
   css: './public/css/',
   data: './src/_data/'
 };
-
+//copy images
+gulp.task('copyImages', function() {
+  // copy any html files in source/ to public/
+  gulp.src('src/images/*').pipe(gulp.dest(paths.public));
+});
+//minify images
+gulp.task('imagemin', () =>
+    gulp.src('src/images/*')
+        .pipe(imagemin())
+        .pipe(gulp.dest('dist/images'))
+);
 /**
  * Compile .pug files and pass in data from json file
  * matching file name. index.pug - index.pug.json
@@ -88,4 +99,4 @@ gulp.task('build', ['sass', 'pug']);
  * compile the jekyll site, launch BrowserSync then watch
  * files for changes
  */
-gulp.task('default', ['browser-sync', 'watch']);
+gulp.task('default', ['browser-sync', 'watch', 'copyImages']);
