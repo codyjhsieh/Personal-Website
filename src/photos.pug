@@ -1,10 +1,11 @@
 extends _layouts/home
+
 block head_end
 	link(rel="stylesheet" href="/css/style.css") 
 	include _partials/header
 
 block content
-	div(class="grid")
+	div(class="grid_photos")
 		div(class="col easqlite")
 			a(href="https://github.com/MobileDevelopersOfBerkeley/EaSQLite" target="_blank")
 				div(class="info")
@@ -39,4 +40,3 @@ block content
 
 block body_end
 	//script(type="text/javascript" src="/js/script.js")
-
