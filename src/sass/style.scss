@@ -18,6 +18,9 @@ header {
         margin: 0;
         padding: 0;
     }
+    #canvas {
+        margin-top: 1%;
+    }
     /* Remove margins and padding from the list, and add a black background color */
     ul.topnav {
         list-style-type: none;
@@ -25,73 +28,38 @@ header {
         padding: 0;
         overflow: hidden;
         width: 80%;
-
     }
     /* Float the list items side by side */
     ul.topnav li {
         display: inline-block;
+        width: 20%;
     }
     /* Style the links inside the list items */
     ul.topnav li a {
         display: inline-block;
-        color: #000000;
+        color: #555;
         text-align: center;
         padding: 14px 16px;
         text-decoration: none;
         transition: 0.3s;
-        font-size: 17px;
-    }
-    /* Change background color of links on hover */
-    ul.topnav li a:hover {
-        color: #555;
+        font-size: 14px;
+        width: 100%;
     }
     /* Hide the list item that contains the link that should open and close the topnav on small screens */
     ul.topnav li.icon {
         display: none;
     }
-    /* When the screen is less than 680 pixels wide, hide all list items, except for the first one ("Home"). Show the list item that contains the link to open and close the topnav (li.icon) */
-    @media screen and (max-width:850px) {
-        ul.topnav li {
-            display: none;
-        }
-        ul.topnav li.icon {
-            float: right;
-            display: inline-block;
-        }
-        .buttonHolder {
-            text-align: center;
-        }
-    }
-    /* The "responsive" class is added to the topnav with JavaScript when the user clicks on the icon. This class makes the topnav look good on small screens */
-    @media screen and (max-width:850px) {
-        ul.topnav.responsive {
-            position: relative;
-        }
-        ul.topnav.responsive li.icon {
-            position: absolute;
-            right: 0;
-            top: 0;
-        }
-        ul.topnav.responsive li {
-            float: none;
-            display: inline;
-        }
-        ul.topnav.responsive li a {
-            display: block;
-            text-align: center;
-        }
+    .buttonHolder {
+        display: inline-block;
+        float: right;
     }
     ul img {
-        max-width: 100%;
+        max-width: 60%;
         max-height: 60px;
         margin: auto;
         display: inline-block;
         float: left;
         padding: 14px 16px;
-    }
-    .buttonHolder {
-        display: inline-block;
-        float: right;
     }
     .one:hover ~ hr {
         margin-left: 0%;
@@ -109,16 +77,169 @@ header {
         margin-left: 80%;
     }
     hr {
-        height: .20rem;
+        height: .05rem;
         width: 20%;
         margin: 0;
-        background: tomato;
+        background: black;
         border: none;
         transition: .3s ease-in-out;
         box-sizing: border-box;
     }
+    /* When the screen is less than 680 pixels wide, hide all list items, except for the first one ("Home"). Show the list item that contains the link to open and close the topnav (li.icon) */
+    @media screen and (max-width:950px) {
+        ul.topnav li {
+            display: none;
+        }
+        ul.topnav li.icon {
+            float: right;
+            display: inline-block;
+        }
+        .buttonHolder {
+            text-align: center;
+            margin-top: 10%;
+            margin-right: 5%;
+        }
+        ul.topnav.responsive {
+            position: relative;
+        }
+        ul.topnav.responsive li.icon {
+            position: absolute;
+            right: 0;
+            top: 0;
+        }
+        ul.topnav.responsive li {
+            float: none;
+            display: inline;
+        }
+        ul.topnav.responsive li a {
+            display: block;
+            text-align: center;
+        }
+        hr {
+            opacity: 0;
+        }
+    }
 }
 
 body {
-    background-color: #FFFFFF
+    background-color: rgba(255, 255, 255, 0);
+    height: 100%;
+    .grid {
+        *,
+        *:after,
+        *:before {
+            box-sizing: border-box;
+            position: relative;
+            padding: 0;
+            margin: 0;
+            z-index: 1;
+        }
+        font-size: 0;
+        width: 81vw;
+        margin: 2vw auto;
+        .col {
+            width: 17vw;
+            height: 17vw;
+            margin: 0 5vw 5vw 5vw;
+            display: inline-block;
+            background: #0693c0;
+            overflow: hidden;
+            a {
+                width: 100%;
+                height: 100%;
+                display: inline-block;
+                z-index: 4;
+                .info {
+                    position: absolute;
+                    top: 0;
+                    left: 0;
+                    width: 100%;
+                    top: 50%;
+                    transform: translateY(-50%);
+                    text-align: center;
+                    opacity: 0;
+                    transition: opacity 250ms;
+                    color: white;
+                    z-index: 2;
+                    padding: 16px;
+                    .name {
+                        font-size: 1.5rem;
+                    }
+                    .blurb {
+                        font-style: italic;
+                        margin-top: 8px;
+                        font-size: 1rem;
+                    }
+                }
+            }
+            &::after {
+                content: "";
+                position: absolute;
+                top: 0;
+                left: 0;
+                right: 0;
+                bottom: 0;
+                background-color: grey;
+                opacity: 0;
+                transition: opacity 400ms;
+            }
+            &.wingit {
+                background: url(/wingit.png) no-repeat top center;
+                background-size: cover;
+            }
+            &.wireflo {
+                background: url(/wireflo.png) no-repeat top center;
+                background-size: cover;
+            }
+            &.easqlite {
+                background: url(/easqlite.png) no-repeat top center;
+                background-size: cover;
+            }
+            &.qlic {
+                background: url(/qlic.png) no-repeat top center;
+                background-size: cover;
+            }
+            &.yack {
+                background: url(/yackrank.png) no-repeat top center;
+                background-size: cover;
+            }
+            &.concentraid {
+                background: url(/concentraid.png) no-repeat top center;
+                background-size: cover;
+            }
+            &:hover,
+            &:focus, &:active {
+                .info {
+                    opacity: 1;
+                }
+                &::after {
+                    content: "";
+                    opacity: .7;
+                }
+            }
+            @media (max-width: 1100px) {
+                width: 30vw;
+                height: 30vw;
+            }
+            @media (max-width: 600px) {
+                width: 60vw;
+                height: 60vw;
+            }
+        }
+        @media (max-width: 1100px) {
+            width: 80vw;
+        }
+        @media (max-width: 600px) {
+            width: 70vw;
+        }
+    }
+}
+
+footer {
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    height: 60px;
+    background-color: #efefef;
+    text-align: center;
 }
