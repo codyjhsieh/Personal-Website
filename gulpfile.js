@@ -9,6 +9,7 @@ var gulp = require('gulp'),
   sass = require('gulp-sass'),
   browserSync = require('browser-sync');
 var imagemin = require('gulp-imagemin');
+var imageResize = require('gulp-image-resize');
 
 /*
  * Directories here
@@ -19,17 +20,14 @@ var paths = {
   css: './public/css/',
   data: './src/_data/'
 };
-//copy images
-gulp.task('copyImages', function() {
-  // copy any html files in source/ to public/
-  gulp.src('src/images/*').pipe(gulp.dest(paths.public));
-});
-//minify images
-gulp.task('imagemin', () =>
-    gulp.src('src/images/*')
-        .pipe(imagemin())
-        .pipe(gulp.dest('dist/images'))
-);
+gulp.task('resize', function(){
+  return gulp.src('./src/images/*.{jpg,png}')
+  .pipe(imageResize({ 
+    width : 800
+  }))
+  .pipe(gulp.dest(paths.public))
+})
+
 /**
  * Compile .pug files and pass in data from json file
  * matching file name. index.pug - index.pug.json
@@ -53,7 +51,7 @@ gulp.task('rebuild', ['pug'], function () {
 /**
  * Wait for pug and sass tasks, then launch the browser-sync Server
  */
-gulp.task('browser-sync', ['sass', 'pug'], function () {
+gulp.task('browser-sync', ['sass', 'pug', 'resize'], function () {
   browserSync({
     server: {
       baseDir: paths.public
@@ -99,4 +97,4 @@ gulp.task('build', ['sass', 'pug']);
  * compile the jekyll site, launch BrowserSync then watch
  * files for changes
  */
-gulp.task('default', ['browser-sync', 'watch', 'copyImages']);
+gulp.task('default', ['browser-sync', 'watch', 'resize']);

@@ -1,0 +1,32 @@
+extends _layouts/home
+
+block head_end
+	link(rel="stylesheet" href="/css/style.css") 
+	header
+		script.
+			function myFunction() {
+			var x = document.getElementById("myTopnav");
+			if (x.className === "topnav") {
+					x.className += " responsive";
+			} else {
+					x.className = "topnav";
+				}
+			}
+		div(id="canvas")
+			ul(class="topnav" id="myTopnav")
+				div(class="logoHolder")
+					img(src='/logo.png' class="logo")
+				li(class="icon"): a(href="javascript:void(0);" onclick="myFunction()") &#9776
+				div(class="buttonHolder")
+					li(class="one"): a(href="index.html", title="Recent") RECENT
+					li(class="two"): a(href="photos.html", title="Photos") PHOTOS
+					li(class="three"): a(href="blog.html", title="Blog") BLOG
+					li(class="four"): a(href="about.html", title="About") ABOUT
+					li(class="five"): a(href="contact.html", title="Contact") CONTACT
+					hr(class="about_active")
+block content
+
+		script(type="text/javascript" src="//ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js")
+
+block body_end
+	//script(type="text/javascript" src="/js/script.js")

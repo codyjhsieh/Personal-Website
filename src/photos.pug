@@ -2,40 +2,54 @@ extends _layouts/home
 
 block head_end
 	link(rel="stylesheet" href="/css/style.css") 
-	include _partials/header
-
+	header
+		script.
+			function myFunction() {
+			var x = document.getElementById("myTopnav");
+			if (x.className === "topnav") {
+					x.className += " responsive";
+			} else {
+					x.className = "topnav";
+				}
+			}
+		div(id="canvas")
+			ul(class="topnav" id="myTopnav")
+				div(class="logoHolder")
+					img(src='/logo.png' class="logo")
+				li(class="icon"): a(href="javascript:void(0);" onclick="myFunction()") &#9776
+				div(class="buttonHolder")
+					li(class="one"): a(href="index.html", title="Recent") RECENT
+					li(class="two"): a(href="photos.html", title="Photos") PHOTOS
+					li(class="three"): a(href="blog.html", title="Blog") BLOG
+					li(class="four"): a(href="about.html", title="About") ABOUT
+					li(class="five"): a(href="contact.html", title="Contact") CONTACT
+					hr(class="photo_active")
 block content
-	div(class="grid_photos")
-		div(class="col easqlite")
-			a(href="https://github.com/MobileDevelopersOfBerkeley/EaSQLite" target="_blank")
+	div(class="grid")
+		div(class="col photo_one")
+			a(href="photos.html" target="_blank")
 				div(class="info")
-					div(class="name") EaSQlite
-					div(class="blurb") Android database absraction layer library
-		div(class="col wireflo")
-			a(href="https://github.com/tarunkhasnavis07/WireFlo" target="_blank")
+					div(class="name") Nishita
+		div(class="col photo_two")
+			a(href="photos.html" target="_blank")
 				div(class="info")
-					div(class="name") WireFly
-					div(class="blurb") international currency exchange web app
-		div(class="col qlic")
-			a(href="https://play.google.com/store/apps/details?id=com.swap.mdb.qlic&hl=en" target="_blank")
+					div(class="name") Japanese Forest
+		div(class="col photo_three")
+			a(href="photos.html" target="_blank")
 				div(class="info")
-					div(class="name") Qlic
-					div(class="blurb") nearby contact sharing app
-		div(class="col wingit")
-			a(href="https://github.com/MobileDevelopersOfBerkeley/WingIt" target="_blank")
+					div(class="name") Deanna
+		div(class="col photo_four")
+			a(href="photos.html" target="_blank")
 				div(class="info")
-					div(class="name") WingIt
-					div(class="blurb") instantaneous location based trip planner app
-		div(class="col yack")
-			a(href="https://github.com/Yakathon/YackRank" target="_blank")
+					div(class="name") Sister
+		div(class="col photo_five")
+			a(href="photos.html" target="_blank")
 				div(class="info")
-					div(class="name") YackRank
-					div(class="blurb") YikYak analyzer web app
-		div(class="col concentraid")
-			a(href="https://play.google.com/store/apps/details?id=com.mdb.berkeley.concentraid&hl=en" target="_blank")
+					div(class="name") Crater Moon
+		div(class="col photo_six")
+			a(href="photos.html" target="_blank")
 				div(class="info")
-					div(class="name") Concentraid
-					div(class="blurb") procrastination assistant app
+					div(class="name") Bergen
 		script(type="text/javascript" src="//ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js")
 
 block body_end
