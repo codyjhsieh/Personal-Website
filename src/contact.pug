@@ -2,20 +2,13 @@ extends _layouts/home
 block head_end
 	link(rel="stylesheet" href="/css/style.css") 
 	header
-		script.
-			function myFunction() {
-			var x = document.getElementById("myTopnav");
-			if (x.className === "topnav") {
-					x.className += " responsive";
-			} else {
-					x.className = "topnav";
-				}
-			}
+		script(src="js/script.js")
 		div(id="canvas")
 			ul(class="topnav" id="myTopnav")
 				div(class="logoHolder")
-					img(src='/logo.png' class="logo")
-				li(class="icon"): a(href="javascript:void(0);" onclick="myFunction()") &#9776
+					a(href="index.html")
+						img(src='images/logo.png' class="logo")
+				li(class="icon"): a(href="javascript:void(0);" onclick="openNav()") &#9776
 				div(class="buttonHolder")
 					li(class="one"): a(href="index.html", title="Recent") RECENT
 					li(class="two"): a(href="photos.html", title="Photos") PHOTOS
@@ -24,32 +17,7 @@ block head_end
 					li(class="five"): a(href="contact.html", title="Contact") CONTACT
 					hr(class="contact_active")
 block content
-	<section id="contact" class="contact gray">
-		div(class="row")
-			div(class="col-md-12 mg-bt-80")
-				div(class="header-content")
-					h2 Contact Me		
-			div(class="col-sm-6 col-md-6")
-				div(class="address")
-					h2 Get in touch
-					p Have a business inquiry? Afraid to slide into my dm's? Here's the best way to contact me.
-					h2 Contact Info
-					ul(class="office")
-						<li><i class="fa fa-phone"></i> <strong>Phone:</strong> (602) 380-1585</li>
-						<li><i class="fa fa-envelope"></i> <strong>Email:</strong> <a href="mailto:cohsieh@berkeley.edu">cohsieh@berkeley.edu</a></li>
-			div(class="col-sm-6 col-md-6")
-				<form id="contact-form" role="form">                            
-					div(class="form-group")
-						<input type="text" class="form-control" id="email_name" placeholder="Name">
-					div(class="form-group")
-						<input type="email" class="form-control" id="email_text" placeholder="Email">                                
-				div(class="form-group")
-				<textarea class="form-control" id="email_message" rows="10" placeholder="Message"></textarea>
-			<br/>
-			<button type="submit" class="btn" onClick="sendMail()">Send Message</button>
-			div(class="ajax-response")
-				</form>
-	</section>
+
 block body_end
 	//script(type="text/javascript" src="/js/script.js")
 

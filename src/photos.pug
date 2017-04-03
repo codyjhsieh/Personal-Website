@@ -3,20 +3,13 @@ extends _layouts/home
 block head_end
 	link(rel="stylesheet" href="/css/style.css") 
 	header
-		script.
-			function myFunction() {
-			var x = document.getElementById("myTopnav");
-			if (x.className === "topnav") {
-					x.className += " responsive";
-			} else {
-					x.className = "topnav";
-				}
-			}
+		script(src="js/script.js")
 		div(id="canvas")
 			ul(class="topnav" id="myTopnav")
 				div(class="logoHolder")
-					img(src='/logo.png' class="logo")
-				li(class="icon"): a(href="javascript:void(0);" onclick="myFunction()") &#9776
+					a(href="index.html")
+						img(src='images/logo.png' class="logo")
+				li(class="icon"): a(href="javascript:void(0);" onclick="openNav()") &#9776
 				div(class="buttonHolder")
 					li(class="one"): a(href="index.html", title="Recent") RECENT
 					li(class="two"): a(href="photos.html", title="Photos") PHOTOS
@@ -29,7 +22,7 @@ block content
 		div(class="col photo_one")
 			a(href="photos.html" target="_blank")
 				div(class="info")
-					div(class="name") Nishita
+					div(class="name") Bobs
 		div(class="col photo_two")
 			a(href="photos.html" target="_blank")
 				div(class="info")

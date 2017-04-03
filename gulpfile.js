@@ -7,9 +7,10 @@ var gulp = require('gulp'),
   pug = require('gulp-pug'),
   prefix = require('gulp-autoprefixer'),
   sass = require('gulp-sass'),
-  browserSync = require('browser-sync');
-var imagemin = require('gulp-imagemin');
-var imageResize = require('gulp-image-resize');
+  browserSync = require('browser-sync'),
+  imagemin = require('gulp-imagemin'),
+  imageResize = require('gulp-image-resize'),
+  include = require('gulp-include');
 
 /*
  * Directories here
@@ -18,14 +19,14 @@ var paths = {
   public: './public/',
   sass: './src/sass/',
   css: './public/css/',
-  data: './src/_data/'
+  data: './src/_data/',
 };
 gulp.task('resize', function(){
   return gulp.src('./src/images/*.{jpg,png}')
   .pipe(imageResize({ 
     width : 800
   }))
-  .pipe(gulp.dest(paths.public))
+  .pipe(gulp.dest('./public/images'))
 })
 
 /**
@@ -40,7 +41,15 @@ gulp.task('pug', function () {
     .pipe(pug())
     .pipe(gulp.dest(paths.public));
 });
-
+//include javascript files
+gulp.task("scripts", function() {
+  console.log("-- gulp is running task 'scripts'");
+ 
+  gulp.src("src/js/*.js")
+    .pipe(include())
+      .on('error', console.log)
+    .pipe(gulp.dest('./public/js'));
+});
 /**
  * Recompile .pug files and live reload the browser
  */
@@ -87,6 +96,7 @@ gulp.task('sass', function () {
 gulp.task('watch', function () {
   gulp.watch(paths.sass + '**/*.scss', ['sass']);
   gulp.watch('./src/**/*.pug', ['rebuild']);
+  gulp.watch('./src/js/*.js', ['scripts']);
 });
 
 // Build task compile sass and pug.
@@ -97,4 +107,4 @@ gulp.task('build', ['sass', 'pug']);
  * compile the jekyll site, launch BrowserSync then watch
  * files for changes
  */
-gulp.task('default', ['browser-sync', 'watch', 'resize']);
+gulp.task('default', ['browser-sync', 'watch', 'resize', 'scripts']);
